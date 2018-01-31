@@ -1,14 +1,15 @@
-<html>
-<head>
-    <title>Music App</title>
-</head>
-{% if all_albums %}
-    <ul>
+{% extends 'music/base.html' %}
+{% block title %}Musifan{% endblock %}
+{% block body %}
+
+    {% if all_albums %}
+        <h3>Here is my all Album</h3>
+        <ul>
         {% for album in all_albums %}
-        <li><a href="{% url 'musicdetail' album.id %}"> {{album.album_title}}</a> </li>
+            <li><a href="{% url 'music:detail' album.id %}"> {{album.album_title}}</a></li>
         {% endfor %}
-    </ul>
-{% else %}
-    <h3>You dont have any albums</h3>
-{% endif %}
-</html>
+        </ul>
+    {% else %}
+        <h3>You dont have any albums</h3>
+    {% endif %}
+{% endblock %}
